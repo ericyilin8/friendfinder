@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <p>What's your name?</p><input type="text" id="name"></input>
+    <p>Please answer the questions from 1 to 5.</p>
+
+    <form>
+        <p>How adventurous are you?</p><input type="text" id="adventure"></input>
+        <p>How cool are you?</p><input type="text" id="cool"></input>
+        <p>How successful are you?</p><input type="text" id="successful"></input>
+        <p>How smart are you?</p><input type="text" id="smart"></input>
+        <p>How strong are you?</p><input type="text" id="strong"></input>
+        <button class="submit">Submit</button>
+    </form>
+
+
+    <script>
+
+
+        $(".submit").on("click", function (e) {
+
+            e.preventDefault();
+
+            var name = $("#name").val().trim();
+
+            var adventure = $("#adventure").val().trim();
+            var cool = $("#cool").val().trim();
+            var successful = $("#successful").val().trim();
+            var smart = $("#smart").val().trim();
+            var strong = $("#strong").val().trim();
+
+            var friend = {
+                name: name,
+                answers: [adventure, cool, successful, smart, strong]
+            }
+
+            $.ajax({
+                url: "/survey",
+                method: "POST",
+                data: friend
+            }).then(function(response){
+                alert('Your new best friend is ' + response.name);
+            }
+
+            )
+        })
+    </script>
+</body>
+
+</html>

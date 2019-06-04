@@ -1,0 +1,15 @@
+PSEUDOCODE
+
+Create all the files as listed in the instructions. 
+Install dependencies express and path.
+
+For HTML Routes:
+Create html files. Use JQuery to modify the submit button so that it sends the data as JSON.
+Use express app to route to them.
+
+For API Routes:
+Use express app to create api routes.
+One POST api routes handles submitted data. Store the data as JSON using fs to write to the friends.js file. 
+Read the friends.js file by requiring it and go through each friend finding the closest scorer.
+
+
